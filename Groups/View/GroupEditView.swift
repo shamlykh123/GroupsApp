@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct GroupEditView: View {
     @State var profile: Group
@@ -27,6 +28,10 @@ struct GroupEditView: View {
 struct GroupDataEditView: View {
     @State private var groupName: String = ""
     @State private var groupDetailInfo: String = ""
+    @State private var totalChars = 50
+    @State private var totalCharsGroupInfo = 500
+    @State private var limitedCountText = "0/50"
+    @State private var limitedCountTextForGroupInfo = "0/500"
 
     var body: some View {
         VStack (alignment:.leading){
@@ -38,36 +43,42 @@ struct GroupDataEditView: View {
             
             TextField("", text: $groupName)
                 .foregroundColor(.black)
+                .onReceive(Just(groupName)) { _ in limitText(totalChars, labelCount: groupName.count, totalCount: totalChars, updateVar: &groupName) }
             
             Rectangle()
                 .background(Color(0xB4B4B4))
                 .frame(height: 1)
             HStack() {
-                Spacer()
-                Text("0/50")
+                TextField("", text: $limitedCountText)
+                    .fixedSize()
                     .font(.system(size: 12))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+
             }
-            
+           
             Text("About Group")
                 .foregroundColor(Color(0x5C95FF))
                 .padding(.top, 63)
                 .font(.system(size: 18))
                 .fontWeight(.semibold)
             TextEditor(text: $groupDetailInfo)
-                .padding(.top, 18)
-                .frame(width: 332,height: 115)
-                .background(Color(0xD9D9D9))
-                .opacity(0.3)
+                .padding(.top, 4)
+               .frame(width: 332,height: 115)
+                .scrollContentBackground(.hidden)
+                .background(Color(0xD9D9D9) .opacity(0.3))
                 .cornerRadius(10)
-                .foregroundColor(.black)
+                .onReceive(Just(groupDetailInfo)) { _ in limitText(totalCharsGroupInfo, labelCount: groupDetailInfo.count, totalCount: totalCharsGroupInfo, updateVar: &groupDetailInfo) }
+        
             HStack() {
                 Spacer()
-                Text("0/200")
+                TextField("", text: $limitedCountTextForGroupInfo)
+                    .fixedSize()
                     .font(.system(size: 12))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             HStack(alignment: .center, spacing: 25) {
                 Spacer()
@@ -100,5 +111,17 @@ struct GroupDataEditView: View {
         .cornerRadius(50, corners: [.topLeft, .topRight])
         .frame(minWidth: 0, maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
         .background(.white)
+    }
+    
+    //Function to keep text length in limits
+    func limitText(_ upper: Int, labelCount: Int, totalCount: Int, updateVar: inout String) {
+        if totalCount == totalChars {
+            limitedCountText = "\(labelCount )/\(totalCount)"
+        } else {
+            limitedCountTextForGroupInfo = "\(labelCount )/\(totalCount)"
+        }
+        if updateVar.count > upper {
+            updateVar = String(updateVar.prefix(upper))
+        }
     }
 }
