@@ -9,11 +9,11 @@ import SwiftUI
 import Combine
 
 struct GroupEditView: View {
-    @State var profile: Group
+    @State var profile: GroupsInfo
     var body: some View {
-        NavView(title: "sss", content:
+        NavView(title: "", content:
                     VStack {
-            ProfileImageView(groupPhotoUrl: profile.groupPhoto)
+            ProfileImageView(groupPhotoUrl: profile.groupPhoto ?? "")
             GroupDataEditView()
         }
             .background(Color(0x5C95FF)),
@@ -32,6 +32,7 @@ struct GroupDataEditView: View {
     @State private var totalCharsGroupInfo = 500
     @State private var limitedCountText = "0/50"
     @State private var limitedCountTextForGroupInfo = "0/500"
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         VStack (alignment:.leading){

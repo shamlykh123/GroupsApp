@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GroupDetailView: View {
-    @State var profile: Group
+    @State var profile: GroupsInfo
     @State var showEditView: Bool = false
     @State var isAdmin: Bool = false
     
@@ -24,16 +24,16 @@ struct GroupDetailView: View {
             ) {
                 EmptyView()
             }
-            ProfileImageView(groupPhotoUrl: profile.groupPhoto)
+            ProfileImageView(groupPhotoUrl: profile.groupPhoto ?? "")
                 .padding(.top, 34)
             VStack (spacing: 4){
-                Text(profile.name)
+                Text(profile.name ?? "")
                     .padding(.top, 14)
                     .font(.system(size: 18))
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                 
-                Text(profile.name)
+                Text(profile.name ?? "")
                     .font(.system(size: 12))
                     .foregroundColor(.white)
                     .fontWeight(.semibold)
@@ -56,7 +56,7 @@ struct GroupDetailView: View {
                     .padding(EdgeInsets(top: 44, leading: 34, bottom: 0, trailing: 246))
                     .foregroundColor(Color(0x5C95FF))
                 HStack {
-                    Text(profile.bio)
+                    Text(profile.bio ?? "")
                         .padding(EdgeInsets(top: 10, leading: 49, bottom: 0, trailing: 47))
                         .font(.system(size: 14))
                         .foregroundColor(.black)

@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    var profile: Group
+    var profile: GroupsInfo
     var body: some View {
         HStack( content: {
             VStack {
-                AsyncImage(url: URL(string: profile.groupPhoto)) { image in
+                AsyncImage(url: URL(string: profile.groupPhoto ?? "")) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -29,18 +29,18 @@ struct ProfileView: View {
             .cornerRadius(30)
             VStack(alignment: .leading, spacing: 4, content: {
                 HStack (spacing: 4){
-                    Text(profile.name)
+                    Text(profile.name ?? "")
                         .fontWeight(.semibold)
                         .font(.system(size: 16))
                         .foregroundColor(.black)
-                    Text(profile.userStatus.lowercased())
+                    Text(profile.userStatus?.lowercased() ?? "")
                         .font(.system(size: 10))
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
                         .background(Color(0x5C95FF))
                         .cornerRadius(4)
                 }
-                Text(profile.bio)
+                Text(profile.bio ?? "")
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 14))

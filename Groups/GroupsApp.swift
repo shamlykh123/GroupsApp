@@ -13,9 +13,8 @@ struct GroupsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            GroupList(viewModel: GroupListViewModel())
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            GroupList(viewContext: persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

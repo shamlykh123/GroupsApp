@@ -6,19 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct GroupList: View {
+    
     @ObservedObject var viewModel: GroupListViewModel
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    @FetchRequest(entity: GroupsInfo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GroupsInfo.id, ascending: true)]) private var grouplistFromStore: FetchedResults<GroupsInfo>
+    
+    init(viewContext: NSManagedObjectContext) {
+        self.viewModel = GroupListViewModel(context: viewContext)
+    }
     
     var body: some View {
-        NavView(title: "sss", content:
+        NavView(title: "", content:
                     ZStack {
             ScrollView {
                 LazyVStack (){
                     Spacer(minLength: 50)
-                    ForEach(viewModel.groupList?.result.groups ?? [], id: \.id) { group in
+                    ForEach(self.grouplistFromStore, id: \.id) { group in
                         NavigationLink {
-                            GroupDetailView(profile: group,isAdmin: group.userStatus.lowercased() == "admin")
+                            GroupDetailView(profile: group,isAdmin: group.userStatus?.lowercased() == "admin")
                                 .hiddenNavigationBarStyle()
                         } label: {
                             ProfileView(profile: group)
@@ -34,7 +42,9 @@ struct GroupList: View {
             .background(Color(0x5C95FF))
         }, isDetail: false, isAdmin: false, didTapEdit: {})
         .task{
-            await viewModel.getGroupList()
+            if self.grouplistFromStore.count == 0 {
+                await viewModel.getGroupList()
+            }
         }
     }
 }

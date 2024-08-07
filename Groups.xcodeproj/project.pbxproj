@@ -10,7 +10,6 @@
 		74092D802C5E2B68001E183B /* GroupsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092D7F2C5E2B68001E183B /* GroupsApp.swift */; };
 		74092D822C5E2B68001E183B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092D812C5E2B68001E183B /* Persistence.swift */; };
 		74092D852C5E2B68001E183B /* Groups.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74092D832C5E2B68001E183B /* Groups.xcdatamodeld */; };
-		74092D872C5E2B68001E183B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092D862C5E2B68001E183B /* ContentView.swift */; };
 		74092D892C5E2B6B001E183B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74092D882C5E2B6B001E183B /* Assets.xcassets */; };
 		74092D8D2C5E2B6B001E183B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74092D8C2C5E2B6B001E183B /* Preview Assets.xcassets */; };
 		74092D972C5E2B6D001E183B /* GroupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092D962C5E2B6D001E183B /* GroupsTests.swift */; };
@@ -28,6 +27,8 @@
 		74092DCB2C60A3BB001E183B /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092DCA2C60A3BB001E183B /* GroupDetailView.swift */; };
 		74092DCD2C60B7E4001E183B /* GroupEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092DCC2C60B7E4001E183B /* GroupEditView.swift */; };
 		748574072C61D66D006620F6 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748574062C61D66D006620F6 /* ProfileImageView.swift */; };
+		748574162C6333BD006620F6 /* GroupsInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748574142C6333BD006620F6 /* GroupsInfo+CoreDataClass.swift */; };
+		748574172C6333BD006620F6 /* GroupsInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748574152C6333BD006620F6 /* GroupsInfo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,6 @@
 		74092D7F2C5E2B68001E183B /* GroupsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsApp.swift; sourceTree = "<group>"; };
 		74092D812C5E2B68001E183B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		74092D842C5E2B68001E183B /* Groups.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Groups.xcdatamodel; sourceTree = "<group>"; };
-		74092D862C5E2B68001E183B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		74092D882C5E2B6B001E183B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74092D8A2C5E2B6B001E183B /* Groups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Groups.entitlements; sourceTree = "<group>"; };
 		74092D8C2C5E2B6B001E183B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		74092DCA2C60A3BB001E183B /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		74092DCC2C60B7E4001E183B /* GroupEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEditView.swift; sourceTree = "<group>"; };
 		748574062C61D66D006620F6 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		748574142C6333BD006620F6 /* GroupsInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupsInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		748574152C6333BD006620F6 /* GroupsInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupsInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		74092D7E2C5E2B68001E183B /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				748574182C633A45006620F6 /* Coredata */,
 				74092DC92C5E63E1001E183B /* Info.plist */,
 				74092DC42C5E43C8001E183B /* ViewModel */,
 				74092DC12C5E33CC001E183B /* Model */,
@@ -132,11 +135,8 @@
 				74092DB22C5E2BE6001E183B /* Common */,
 				74092DAF2C5E2BAE001E183B /* Navigation */,
 				74092D7F2C5E2B68001E183B /* GroupsApp.swift */,
-				74092D812C5E2B68001E183B /* Persistence.swift */,
-				74092D862C5E2B68001E183B /* ContentView.swift */,
 				74092D882C5E2B6B001E183B /* Assets.xcassets */,
 				74092D8A2C5E2B6B001E183B /* Groups.entitlements */,
-				74092D832C5E2B68001E183B /* Groups.xcdatamodeld */,
 				74092D8B2C5E2B6B001E183B /* Preview Content */,
 			);
 			path = Groups;
@@ -219,6 +219,17 @@
 				74092DC52C5E43E6001E183B /* GroupListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		748574182C633A45006620F6 /* Coredata */ = {
+			isa = PBXGroup;
+			children = (
+				74092D832C5E2B68001E183B /* Groups.xcdatamodeld */,
+				748574142C6333BD006620F6 /* GroupsInfo+CoreDataClass.swift */,
+				748574152C6333BD006620F6 /* GroupsInfo+CoreDataProperties.swift */,
+				74092D812C5E2B68001E183B /* Persistence.swift */,
+			);
+			path = Coredata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,9 +371,10 @@
 				74092DB12C5E2BC1001E183B /* NavBar.swift in Sources */,
 				74092D852C5E2B68001E183B /* Groups.xcdatamodeld in Sources */,
 				74092DC02C5E2FC0001E183B /* Enums.swift in Sources */,
+				748574162C6333BD006620F6 /* GroupsInfo+CoreDataClass.swift in Sources */,
+				748574172C6333BD006620F6 /* GroupsInfo+CoreDataProperties.swift in Sources */,
 				74092D802C5E2B68001E183B /* GroupsApp.swift in Sources */,
 				74092DBB2C5E2F61001E183B /* GroupList.swift in Sources */,
-				74092D872C5E2B68001E183B /* ContentView.swift in Sources */,
 				74092D822C5E2B68001E183B /* Persistence.swift in Sources */,
 				74092DBE2C5E2F9F001E183B /* APIHandler.swift in Sources */,
 				74092DB42C5E2BF3001E183B /* Constants.swift in Sources */,
